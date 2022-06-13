@@ -1,0 +1,74 @@
+{
+  "team": [
+    {
+      "teamName": "Boston Celtics",
+      "player": "Matt Ryan",
+      "id": 1
+    },
+    {
+      "teamName": "New York Knicks",
+      "player": "Obi Toppin",
+      "id": 2
+    },
+    {
+      "teamName": "Indiana Pacers",
+      "player": "Gabe York",
+      "id": 3
+    },
+    {
+      "teamName": "Chicago Bulls",
+      "player": "Lanzo Ball",
+      "id": 4
+    },
+    {
+      "teamName": "Boston Celtics",
+      "player": "Juwan Morgan",
+      "id": 5
+    },
+    {
+      "teamName": "Chicago Bulls",
+      "player": "Alex Caruso",
+      "id": 6
+    },
+    {
+      "teamName": "Boston Celtics",
+      "player": "Malik Fitts",
+      "id": 7
+    },
+    {
+      "player": "asd",
+      "teamName": "asd",
+      "id": 8
+    },
+    {
+      "player": "adsf",
+      "teamName": "asdf",
+      "id": 9
+    },
+    {
+      "player": "897823",
+      "teamName": "qwe",
+      "id": 10
+    },
+    {
+      "player": "ffffffffffffffffff",
+      "teamName": "asd",
+      "id": 11
+    },
+    {
+      "player": "987",
+      "teamName": "vgc",
+      "id": 12
+    },
+    {
+      "player": "sdfs",
+      "teamName": "sdf",
+      "id": 13
+    },
+    {
+      "player": "",
+      "teamName": "",
+      "id": 14
+    }
+  ]
+}

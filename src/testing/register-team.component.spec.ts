@@ -1,0 +1,99 @@
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { HttpClientModule} from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { of } from 'rxjs';
+import { SearchPipe } from 'src/app/pipe/search.pipe';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Team } from 'src/app/models/Team';
+import { RegistrationFormComponent } from 'src/app/registration-form/registration-form.component';
+import { TeamService } from 'src/app/services/team.service';
+
+const team: Team[] = [
+  {
+    teamName: "Boston Celtics",
+    player: "Matt Ryan",
+  },
+  {
+    teamName: "New York Knicks",
+    player: "Obi Toppin",
+  },
+  {
+    teamName: "Indiana Pacers",
+    player: "Gabe York",
+  }
+];
+
+describe('RegistrationFormComponent', () => {
+  let component: RegistrationFormComponent;
+  let fixture: ComponentFixture<RegistrationFormComponent>;
+  let service: TeamService;
+
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        HttpClientModule, FormsModule, ReactiveFormsModule, RouterTestingModule
+      ],
+      declarations: [ RegistrationFormComponent, SearchPipe ],
+      providers: [RegistrationFormComponent]
+    })
+    .compileComponents();
+    service = TestBed.inject(TeamService);
+    spyOn(service, 'getAllTeams').and.returnValue(of(team));
+    spyOn(service, 'addPlayer').and.returnValue(of(team));
+  }));
+
+  beforeEach(() => {
+
+    fixture = TestBed.createComponent(RegistrationFormComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+
+  // test to check onSubmit method existence
+  it('onSubmit() should exists', () => {
+    expect(component.onSubmit).toBeTruthy();
+  });
+
+  // test to check ngOnInit method existence
+  it('ngOnInit() should exists', () => {
+    expect(component.ngOnInit).toBeTruthy();
+  });
+
+  // test to check addPlayr is called in onSubmit or not
+  it('postNewPlayer() should call service to add a new player ', () => {
+    component.teams = team;
+    component.teamFormGroup.value.player = 'Matt Ryan';
+    component.teamFormGroup.value.teamName = 'Boston Celtics';
+
+    component.postNewPlayer();
+    expect(service.addPlayer).toHaveBeenCalled();
+    expect(component.message).toEqual('Player added');
+  });
+
+  // test to check addPlayer is called in onSubmit and reset form
+  it('postNewPlayer() should call service to add a new player ', () => {
+    component.teams = team;
+    component.teamFormGroup.value.player = 'Matt Ryan';
+    component.teamFormGroup.value.teamName = 'Boston Celtics';
+
+    component.postNewPlayer();
+    expect(service.addPlayer).toHaveBeenCalled();
+    expect(component.teamFormGroup.value.player).toEqual(null);
+  });
+
+  // test to check addPlayer is called in onSubmit and reset form
+  it('postNewPlayer() should call service to add a new player ', () => {
+    component.teams = team;
+    component.teamFormGroup.value.player = 'Matt Ryan';
+    component.teamFormGroup.value.teamName = 'Boston Celtics';
+
+    component.postNewPlayer();
+    expect(service.addPlayer).toHaveBeenCalled();
+    expect(component.teamFormGroup.value.teamName).toEqual(null);
+  });
+});

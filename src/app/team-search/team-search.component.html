@@ -1,0 +1,26 @@
+<div class="container-search">
+    <h1>PLAYERS LIST</h1>
+    <div class="card-search">
+      <input type="text" id="searchText-id" [(ngModel)]="searchText" placeholder="Search By Player or Team Name" />
+    </div>
+    <br>
+    <div class="container-search">
+      <table> 
+        <tr>
+          <th id="th-id">Player</th>
+          <th id="th-id">Team Name</th>
+        </tr>
+  
+        <!-- Implement ngFor on teams to diplay Players and 
+          add search pipe based on searchText-->
+        <tr *ngFor="let tms of teams | search: searchText">
+          <td>{{tms.player}}</td>
+          <td>{{tms.teamName}}</td>
+        </tr>
+      </table>
+    </div>
+    <button routerLink="/registration" style="width: 30%; float:left">
+      ADD ANOTHER PLAYER
+    </button>
+  </div>
+  
